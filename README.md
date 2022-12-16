@@ -29,6 +29,27 @@ Once we have a trained model, we will need to deploy it in the cloud , so that i
 
 ## 2. About the Dataset
 
+You can get the dataset from [kaggle](https://www.kaggle.com/competitions/kitchenware-classification/data). 
+
+Datset contains the images of different kitchenware. Images are of six classes:
+
+- cups
+- glasses
+- plates
+- spoons
+- forks
+- knives
+
+Dataset has the following files in it:
+
+- images - all the kitchenware images in the JPEG format
+- train.csv - Image IDs and class of that particular image for training data
+- test.csv - Image IDs of images for test data
+- sample_submission.csv - a sample submission file in the correct format 
+
+Out of the above files, only `images` and `train.csv` are useful for us. sample_submission.csv is a file meant only for the kaggle compition. test.csv is a list of images with their IDs. This is also useful only for kaggle compition format, but not for us, since we don't know the labels of these images.
+
+We'll start with images in `train.csv`, then split these images into train, validation and test dataset. 
 
 ## 3. Approach to solve the problem
 
