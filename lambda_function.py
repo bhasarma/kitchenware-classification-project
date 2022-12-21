@@ -7,11 +7,11 @@ from keras_image_helper import create_preprocessor
 
 
 ## create a preprocessor
-preprocessor = create_preprocessor('xception', target_size=(150, 150))
+preprocessor = create_preprocessor('xception', target_size=(299, 299))
 
 
 ## initialize
-interpreter = tflite.Interpreter(model_path='clothing-model.tflite')
+interpreter = tflite.Interpreter(model_path='kitchenware-model.tflite')
 interpreter.allocate_tensors()
 
 input_index = interpreter.get_input_details()[0]['index']
@@ -19,16 +19,16 @@ output_index = interpreter.get_output_details()[0]['index']
 
 ## post processing
 classes = [
-    'cups',
+    'cup',
+    'fork',
     'glass',
-    'plate',
-    'spoon',
     'knife',
-    'fork'
+    'plate',
+    'spoon'
 ]
 
 
-## download the image
+## download the image, if not done already
 #url = 'https://github.com/bhasarma/kitchenware-classification-project/blob/main/test-image.jpg?raw=true'
 # function that will get and download image from url
 def predict(url):

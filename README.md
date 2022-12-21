@@ -1,9 +1,9 @@
-# kitchenware-classification-project
+# Kitchenware Classification Project
 
 ![Imgur](https://i.imgur.com/Q5NNJTE.jpg)
-*Collage created using Python Image Library PIL with the code collage.py in this repo*
+*Collage created from training images using Python Image Library PIL with the code collage.py in this repo*
 
-This repository contains the capstone project carried out as part of online course [Machine Learning Zoomcamp](https://github.com/alexeygrigorev/mlbookcamp-code/tree/master/course-zoomcamp) designed and instructed by [Alexey Grigorev](https://github.com/alexeygrigorev) and his team from [DataTalks.Club](https://datatalks.club/). This project is 2 weeks long and peer-reviewed. Idea of this project is to implement everything that we have learnt in the last 11 weeks of courseworks.
+This repository contains the capstone project carried out as part of online course [Machine Learning Zoomcamp](https://github.com/alexeygrigorev/mlbookcamp-code/tree/master/course-zoomcamp) designed and instructed by [Alexey Grigorev](https://github.com/alexeygrigorev) and his team from [DataTalks.Club](https://datatalks.club/). This project was 2 weeks long and peer-reviewed. Idea of this project is to implement everything that we have learnt in the last 11 weeks of courseworks.
 
 ## Table of Contents:
 1. Business Problem Description
@@ -22,7 +22,7 @@ This repository contains the capstone project carried out as part of online cour
 ## 1. Business Problem Description
 Kitchenware refers to a variety of products that are used in the kitchen for cooking, cutting vegetables, baking, eating etc. These products can include cups, glasses, plates, spoons, forks and kinves. 
 
-Let us imagine a use case where you are the Head of Data for an e-commerce giant selling kitchenware prodcuts. A user visits your online plaform and wants to sell one of the mentioned items through your website. He uploads an image of his item into your website. 
+Let us imagine a use case where you are running an e-commerce platform selling kitchenware prodcuts. A user visits your online plaform and wants to sell a kitchenware through your website. He uploads an image of his item into your website. 
 
 We would like to improve user experience and orgnaization of items in your website by implementing an image classification system that can automatically categorize the kitchenware product uploaded by the user into relevant item such a spoon, a fork, a plate etc. User will upload the image and classification system will automatically tell whether it is a spoon or a fork or something else. This will allow the user to list his item in the website more easily . 
 
@@ -34,7 +34,9 @@ Once we have a trained model, we will need to deploy it in the cloud , so that i
 
 You can get the dataset from [kaggle](https://www.kaggle.com/competitions/kitchenware-classification/data). 
 
-Datset contains the images of different kitchenware. Images are of six classes:
+For getting the dataset, you may have to first accept the rules of the competition. Since it is a large dataset, I haven't hosted it on this git-hub repo.
+
+Datset contains images of different kitchenware. Images are of following  six classes:
 
 - cups
 - glasses
@@ -43,16 +45,10 @@ Datset contains the images of different kitchenware. Images are of six classes:
 - forks
 - knives
 
-Dataset has the following files in it:
+Following folders and files inside `dataset` folder are useful to us:
 
-- images - all the kitchenware images in the JPEG format
-- train.csv - Image IDs and class of that particular image for training data
-- test.csv - Image IDs of images for test data
-- sample_submission.csv - a sample submission file in the correct format 
-
-Out of the above files, only `images` and `train.csv` are useful for us. sample_submission.csv is a file meant only for the kaggle compition. test.csv is a list of images with their IDs. This is also useful only for kaggle compition format, but not for us, since we don't know the labels of these images.
-
-We'll start with images in `train.csv`, then split these images into train, validation and test dataset. 
+- images - all images of kitchenware in JPEG format
+- train.csv - list of image IDs of all images in `images` folder and class of that particular image
 
 ## 3. Approach to solve the problem
 ### 3.1 EDA to understand dataset
@@ -68,29 +64,102 @@ When it comes to image dataset, there are not much necessity for EDA unlike tabu
 Model is trained with transfer learning while using the CNN model Xception from keras applications as base model. Model for our images is trained on the top of it. Parameter tuning is done for epochs and learning rate. 
 
 ### 3.3 Model Deployment in the cloud
+Model is deployed in the cloud with AWS Lambda and API Gateway.
 
-## 4. About files and folders in this repo
+## 4. About files in this repo
+
+
+├── collage.py
+├── Dockerfile
+├── environment.yml
+├── kitchenware-model.h5
+├── kitchenware-model.tflite
+├── lambda_function.py
+├── LICENSE
+├── notebook.ipynb
+├── notebook-serverless-deployment.ipynb
+├── README.md
+├── test-image.jpg
+├── test.py
+├── train.py
+└── xception_v4_2_16_0.965.h5
+
+0 directories, 14 files
+
+
+Below is a description of the key files:
+
 |  File name |      Description       |
 |:--------:|:-----------------------------------:|
 |    **README.md**   |  The file you are reading now, meant for the user as an introduction to help navigating the project| 
 |    **notebook.ipynb**   |  Jupyter notebook file where EDA, training models, parameter tuning etc. are done during development in Saturn Cloud|
-|    **notebook-serverless-deployment.ipynb**   |  Jupyter notebook file for deployment ran locally|
-|    **collage.py**   |  a small fun python script for creating a collage of images used in this readme.md|
+|    **train.py**   |  python script converted from `notebook.ipynb` |
+|    **xception_v4_2_16_0.965.h5**   |  Best performing model saved from `notebook.ipynb` |
+|    **kitchenware-model.h5**   |  Same model as above, just downloaded from github and name changed |
+|    **kitchenware-model.tflite**   |  tensorflow lite version of above tensor flow model |
+|    **lamda_function.py**   |  script containing lambda function |
+|    **Dockerfile**   |  Dockerfile for building dokcer image |
+|    **test.py**   |  python script used for testing locally and also as webservice with API Gateway |
+|    **notebook-serverless-deployment.ipynb**   |  Jupyter notebook file for testing model locally|
+|    **environment.yml**   |  environment file for conda environment used for testing model locally |
+|    **test-image.jpg**   |  A random test image downloaded from internet |
+|    **collage.py**   |  a simple fun python script for creating a collage of images used in this readme.md|
 
 ## 5. Development System
 
+**Model development:** 
+Saturn Cloud
+
+**Model deployment (for testing locally):**
+OS: Ubuntu 18.04.6 LTS
+Architecture: x86_64
+conda virtual environment for development
+
 ## 6. How to reproduce this project
 ### 6.1 Development
-### 6.2 Deployment using tensorflow-lite
 
-- converting tensorflow / keras model to TF-Lite format
-- removing tensorflow dependency
-- converting above notebook into a python script with `nbconvert`
-- creating a lamda function in the code `lamda_function.py`
-- packaging everything in a docker container for uploading to AWS Lambda
-	- build it localy with `docker build -t kitchenware-model .`
-	- run (test) locally with `docker run -it --rm -p 8080:8080 kitchenware-model:latest`
-	- test on another terminal with `python test.py`
+Development part of this project i.e. getting the best performing and saving it, basicall everything in `notebook.ipynb` is done in Saturn Cloud Jupyter otebook server with GPU. 
+
+If you don't have an account yet, you can do it with this [link](https://saturncloud.io/?utm_source=Youtube+&utm_medium=YouTube&utm_campaign=AlexeyGMLZoomCamp&utm_term=AlexeyGMLZoomCamp) 
+
+Make sure that there is an `utm` in this link. Then you get a 30 hours of free GPU hours and can run this notebook. 
+
+Then click on the below Run in Saturn Cloud:
+
+[![Run in Saturn Cloud](https://saturncloud.io/images/embed/run-in-saturn-cloud.svg)](https://app.community.saturnenterprise.io/dash/o/community/resources?templateId=edc9880a27cc4593862bbdb872f98023)
+
+This will allow you to clone my repo.
+
+### 6.2 Deployment using tensorflow-lite
+After development, best model is downloaded to local folder and first deployed locally. This is done in the `notebook-serverless-deployment.ipynb` file. It is done in a local Anaconda environment.
+
+For this, you first have to install Anaconda on your system, if you have not done it already. Install it by following these instructions in this [Anaconda](https://www.anaconda.com/products/distribution) page. This Site automatically detects the operating system and suggest the correct package.
+
+I have created a `environment.yml` dependency file by running the command `conda env export > environment.yml` inside my activated conda envirnment. You can now recreate this environment with the command:
+
+```
+conda env create -f environment.yml
+``` 
+You can check if the environment `ml-zoomcamp` is created by listing all the conda environment available with the command:
+
+```
+conda info --envs
+```
+Activate the environment with:
+
+```
+conda activate ml-zoomcamp
+```
+
+Now you should be able to run `notebook-serverless-deployment.ipynb`, run it and play with it.
+
+This notebook is then converted into a script `lamda-function.py`. A docker file is built to use it for lamda function. 
+
+- build it localy with `docker build -t kitchenware-model .`
+- run (test) locally with `docker run -it --rm -p 8080:8080 kitchenware-model:latest`
+- test on another terminal with `python test.py`
+
+
 
 - creating the lamda function
 	- go to lamda on AWS
@@ -129,12 +198,13 @@ Default output format [None]:
 ```bash
 (base) bsarma@turing:~$ aws ecr create-repository --repository-name kitchenware-tflite-images
 {
+  {
     "repository": {
-        "repositoryArn": "arn:aws:ecr:us-east-1:5421152122142:repository/kitchenware-tflite-images",
-        "registryId": "5421152122142",
-        "repositoryName": "clothing-tflite-images",
-        "repositoryUri": "5421152122142.dkr.ecr.us-east-1.amazonaws.com/clothing-tflite-images",
-        "createdAt": 1669465123.0,
+        "repositoryArn": "arn:aws:ecr:us-east-1:546575206078:repository/kitchenware-tflite-images",
+        "registryId": "546575206078",
+        "repositoryName": "kitchenware-tflite-images",
+        "repositoryUri": "546575206078.dkr.ecr.us-east-1.amazonaws.com/kitchenware-tflite-images",
+        "createdAt": 1671572784.0,
         "imageTagMutability": "MUTABLE",
         "imageScanningConfiguration": {
             "scanOnPush": false
@@ -144,7 +214,6 @@ Default output format [None]:
         }
     }
 }
-
 ```
 **4. Publish the image just created**
 4.1 first log into the registry wtih
@@ -174,18 +243,35 @@ $ echo $REMOTE_URI
 ```
 
 ```bash
-base) bsarma@turing:~/GitHub/kitchenware-classification-project$ docker tag clothing-model:latest $REMOTE_URI
+base) bsarma@turing:~/GitHub/kitchenware-classification-project$ docker tag kitchenware-model:latest $REMOTE_URI
 
 (base) bsarma@turing:~/GitHub/kitchenware-classification-project$ docker push $REMOTE_URI
 
 ```
+
+Now we can use this ECR for lambda function. We clicked previously on `Container image` as in figure above. Then  
+
 This was about deploying our lambda function using aws.  
 
-Now, we want to use it as webservice.  For this, we'll expose the lamda function we created as a web service. 
+Now, we want to use it as webservice.  For this, we'll expose the lamda function we created as a web service using API Gateway, aservice from AWS. 
 
+- Demonstration of deployment to AWS Lambda: [https://youtu.be/r7pxXrNbN8M](https://youtu.be/r7pxXrNbN8M)
 
+- Demonstration of API-Gateway: [https://youtu.be/-SPoIwNjBbI](https://youtu.be/-SPoIwNjBbI)
 	
 ## 7. Conclusions
+
+**Decelopment**
+
+* An accuracy of 0.965 is obtained on test data without any overfitting
+* Best model is saved and deployed using AWS Lambda and API Gateway
+* Limited EDA on images are done
+* Model is trained on multiple variations of neural network: with dropout and without dropout, with an extra inner dense layer and without
+* parameter tuning is done for learning rate, dropout rate, size of the extra inner layer etc. 
+
+**Deployment**
+
+* Model is deployed with AWS Lambda and API Gateway
 
 ## 8. References
 
