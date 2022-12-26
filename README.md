@@ -110,7 +110,7 @@ Below is a description of the key files:
 **Model development:** 
 Saturn Cloud
 
-**Model deployment (for testing locally):**
+**Model deployment (for testing locally):**<br>
 OS: Ubuntu 18.04.6 LTS<br>
 Architecture: x86_64<br>
 conda virtual environment for development<br>
