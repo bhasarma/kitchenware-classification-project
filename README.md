@@ -281,7 +281,8 @@ Now, we want to use it as webservice.  For this, we'll expose the lamda function
 
 
 >work done after submitting this capstone project on 21.12.2022 with Commoit ID `1f283a8`:
-1. cleaning train.py file
+1. cleaned train.py file
+2. corrected the appearance of files and folders section
 
 ## Contacts
 If you face any problem in running any part of the project: 
