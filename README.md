@@ -278,6 +278,11 @@ Now, we want to use it as webservice.  For this, we'll expose the lamda function
 - [Github repository of the course Machine Learning Zoomcamp](https://github.com/alexeygrigorev/mlbookcamp-code/tree/master/course-zoomcamp) 
 - [Youtube Playlist where course videos are hosted](https://www.youtube.com/playlist?list=PL3MmuxUbc_hIhxl5Ji8t4O6lPAOpHaCLR)
 
+
+
+>work done after submitting this capstone project on 21.12.2022 with Commoit ID `1f283a8`:
+1. cleaning train.py file
+
 ## Contacts
 If you face any problem in running any part of the project: 
 
