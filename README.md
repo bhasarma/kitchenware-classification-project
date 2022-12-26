@@ -69,20 +69,20 @@ Model is deployed in the cloud with AWS Lambda and API Gateway.
 ## 4. About files in this repo
 
 
-├── collage.py
-├── Dockerfile
-├── environment.yml
-├── kitchenware-model.h5
-├── kitchenware-model.tflite
-├── lambda_function.py
-├── LICENSE
-├── notebook.ipynb
-├── notebook-serverless-deployment.ipynb
-├── README.md
-├── test-image.jpg
-├── test.py
-├── train.py
-└── xception_v4_2_16_0.965.h5
+├── collage.py<br>
+├── Dockerfile<br>
+├── environment.yml<br>
+├── kitchenware-model.h5<br>
+├── kitchenware-model.tflite<br>
+├── lambda_function.py<br>
+├── LICENSE<br>
+├── notebook.ipynb<br>
+├── notebook-serverless-deployment.ipynb<br>
+├── README.md<br>
+├── test-image.jpg<br>
+├── test.py<br>
+├── train.py<br>
+└── xception_v4_2_16_0.965.h5<br>
 
 0 directories, 14 files
 
