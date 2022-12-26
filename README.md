@@ -111,9 +111,9 @@ Below is a description of the key files:
 Saturn Cloud
 
 **Model deployment (for testing locally):**
-OS: Ubuntu 18.04.6 LTS
-Architecture: x86_64
-conda virtual environment for development
+OS: Ubuntu 18.04.6 LTS<br>
+Architecture: x86_64<br>
+conda virtual environment for development<br>
 
 ## 6. How to reproduce this project
 ### 6.1 Development
@@ -282,7 +282,8 @@ Now, we want to use it as webservice.  For this, we'll expose the lamda function
 
 >work done after submitting this capstone project on 21.12.2022 with Commoit ID `1f283a8`:
 1. cleaned train.py file
-2. corrected the appearance of files and folders section
+2. corrected appearance of files and folders section in readme.md
+3. corrected appearance of Model deployment (for testing locally) part under 5. Development System section in readme.md
 
 ## Contacts
 If you face any problem in running any part of the project: 
